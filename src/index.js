@@ -1,17 +1,49 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { StrictMode } from 'react'
+import ReactDOM from 'react-dom'
+import { Route, Switch, BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { ThemeProvider } from '@material-ui/styles'
+import { CssBaseline } from '@material-ui/core'
+
+import { store } from './redux/store'
+import { theme } from './styles/theme'
+import App from './components/App'
+
+if (process.env.NODE_ENV === 'development') console.log('@theme', theme)
+
+const Config = ({ children }) => <>
+  <Provider store={store}>
+    <BrowserRouter>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <StrictMode>
+              {children}
+            </StrictMode>
+        </ThemeProvider>
+    </BrowserRouter>
+  </Provider>
+</>
+
+const Routes = () => <>
+  <Switch>
+    <Route
+        path="/"
+        exact
+        key="home"
+        component={App}
+    />
+    <Route
+        path="/edit/:itemId"
+        exact
+        key="edit"
+        component={App}
+    />
+  </Switch>
+</>
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Config>
+    <Routes />
+  </Config>,
   document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+)
