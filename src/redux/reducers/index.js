@@ -2,6 +2,6 @@ import { combineReducers } from 'redux'
 
 import { todoReducer } from './todo'
 
-export const appReducers = combineReducers({
+export const appReducer = combineReducers({
     todoList: todoReducer
 })

@@ -12,7 +12,7 @@ const layoutStyles = theme => ({
 })
 
 const Layout = ({ classes, children }) => <>
-	<AppBar position="static">
+	<AppBar role="banner" position="static">
 		<Toolbar></Toolbar>
 	</AppBar>
 	<Container className={classes.mainContent} maxWidth="sm">

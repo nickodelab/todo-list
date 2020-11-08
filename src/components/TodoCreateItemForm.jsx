@@ -21,43 +21,44 @@ const todoCreateItemFormStyles = theme => ({
 })
 
 const TodoCreateItemForm = ({ classes, createItem, inputContent, onChangeInputContent }) => {
-    const inputElement = useRef(null);
+  const inputElement = useRef(null);
 
-    const onCreateItem = () => {
-      createItem(inputContent)
-      inputElement.current.focus()
-    }
+  const onCreateItem = () => {
+    createItem(inputContent)
+    inputElement.current.focus()
+  }
 
-    return <>
-      <Paper 
-        className={classes.todoCreateItemForm}
-        variant="outlined"
+  return <>
+    <Paper
+      className={classes.todoCreateItemForm}
+      variant="outlined"
+    >
+      <InputBase
+        classes={{ input: classes.inputCreateItem }}
+        className={classes.inputWrapper}
+        inputProps={{
+          'aria-label': 'Create item',
+          autoFocus: true,
+          spellCheck: false,
+          onKeyDown: (e) => e.key === 'Enter' && onCreateItem()
+        }}
+        placeholder="Create item"
+        onChange={(e) => onChangeInputContent(e.target.value)}
+        value={inputContent}
+        inputRef={inputElement}
+      />
+
+      <IconButton
+        color="primary"
+        onClick={onCreateItem}
+        aria-label="Create item"
+        disabled={inputContent.trim() === ''}
       >
-        <InputBase
-          classes={{ input: classes.inputCreateItem }}
-          className={classes.inputWrapper}
-          inputProps={{ 
-                'aria-label': 'Create item',
-                'autofocus': 'true',
-                spellCheck: false, 
-                onKeyDown: (e) => e.key === 'Enter' && onCreateItem() 
-          }}
-          placeholder="Create item"
-          onChange={(e) => onChangeInputContent(e.target.value)}
-          value={inputContent}
-          inputRef={inputElement}
-        />
+        <SendIcon />
+      </IconButton>
+    </Paper>
+  </>
+}
 
-        <IconButton 
-          color="primary" 
-          onClick={onCreateItem} 
-          aria-label="create"
-          disabled={inputContent.trim() === ''}
-        >
-          <SendIcon />
-        </IconButton>
-      </Paper>
-</>}
-
-const mapStateToProps = ({ todoList: { inputContent }}) => ({ inputContent })
+const mapStateToProps = ({ todoList: { inputContent } }) => ({ inputContent })
 export default connect(mapStateToProps, { createItem, onChangeInputContent })(withStyles(todoCreateItemFormStyles)(TodoCreateItemForm))

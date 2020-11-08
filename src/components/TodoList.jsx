@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Box, Typography, withStyles } from '@material-ui/core'
 
 import TodoItem from './TodoItem'
-import TodoEdit from './TodoEdit'
 
 const todoListStyles = theme => ({
   todoList: {
@@ -14,15 +13,16 @@ const todoListStyles = theme => ({
   }
 })
 
-
 const TodoList = ({ classes, items, numberOfItems }) => <>
-    <Box className={classes.todoList}>
-      {!!numberOfItems && <Typography className={classes.helperText}>
-          You have {numberOfItems} items
+  <Box className={classes.todoList}>
+    {!!numberOfItems && <Typography className={classes.helperText}>
+      You have {numberOfItems} items
       </Typography>}
+    <Box role="list">
       {items.map(({ content, id }) => <TodoItem content={content} key={id} itemId={id} />)}
     </Box>
+  </Box>
 </>
 
-const mapStateToProps = ({ todoList: { items }}) => ({ items, numberOfItems: items.length })
+const mapStateToProps = ({ todoList: { items } }) => ({ items, numberOfItems: items.length })
 export default connect(mapStateToProps)(withStyles(todoListStyles)(TodoList))

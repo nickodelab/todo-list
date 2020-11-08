@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Paper, Typography, Grow, withStyles } from '@material-ui/core'
-import { withRouter } from 'react-router-dom'
+
+import { onEdit } from '../redux/actions/todo'
 
 const todoItemStyles = theme => ({
   todoItem: {
@@ -13,16 +15,17 @@ const todoItemStyles = theme => ({
   }
 })
 
-const TodoItem = ({ classes, content, itemId, history }) => <>
+const TodoItem = ({ classes, content, itemId, onEdit }) => <>
   <Grow in>
-    <Paper 
+    <Paper
       className={classes.todoItem}
       variant="outlined"
-      onClick={() => history.push(`/edit/${itemId}`)}
+      onClick={() => onEdit(itemId)}
+      role="listitem"
     >
-      <Typography>{content}</Typography>
+      <Typography variant="h5">{content}</Typography>
     </Paper>
   </Grow>
 </>
 
-export default withStyles(todoItemStyles)(withRouter(TodoItem))
+export default connect(undefined, { onEdit })(withStyles(todoItemStyles)(TodoItem))

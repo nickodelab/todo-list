@@ -1,10 +1,11 @@
 
-import { SET_CREATE_ITEM, SET_CLEAR_INPUT, SET_ON_CHANGE_INPUT_CONTENT, UPDATE_ITEM } from '../actions/todo'
+import { SET_CREATE_ITEM, SET_CLEAR_INPUT, SET_ON_CHANGE_INPUT_CONTENT, UPDATE_ITEM, ON_EDIT } from '../actions/todo'
 
-const todoListInitialState = {
+export const todoListInitialState = {
     items: [],
-    title: 'My Todo List',
-    inputContent: ''
+    title: 'Awesome TODO list',
+    inputContent: '',
+    editItemId: undefined
 }
 
 export function todoReducer(state = todoListInitialState, action) {
@@ -19,20 +20,25 @@ export function todoReducer(state = todoListInitialState, action) {
                 ...state,
                 inputContent: todoListInitialState.inputContent
             }
-        case SET_ON_CHANGE_INPUT_CONTENT: 
+        case SET_ON_CHANGE_INPUT_CONTENT:
             return {
                 ...state,
                 inputContent: action.payload
             }
-        case UPDATE_ITEM: 
+        case UPDATE_ITEM:
             return {
                 ...state,
                 items: state.items.map(item => item.id === action.payload.id ? { ...item, content: action.payload.content } : item)
-            }      
+            }
+        case ON_EDIT:
+            return {
+                ...state,
+                editItemId: action.payload
+            }
         default:
             return state
-            break
-    }  
+    }
 }
 
+// selectors
 export const selectorItemById = (items, props) => items.find(({ id }) => id === props.itemId)

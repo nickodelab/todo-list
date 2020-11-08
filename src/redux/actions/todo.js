@@ -4,6 +4,7 @@ export const SET_CREATE_ITEM = `${TODO_LIST} SET_CREATE_ITEM`
 export const UPDATE_ITEM = `${TODO_LIST} UPDATE_ITEM`
 export const SET_CLEAR_INPUT = `${TODO_LIST} SET_CLEAR_INPUT`
 export const SET_ON_CHANGE_INPUT_CONTENT = `${TODO_LIST} SET_ON_CHANGE_INPUT_CONTENT`
+export const ON_EDIT = `${TODO_LIST} ON_EDIT`
 
 export const createItem = item => ({
     type: SET_CREATE_ITEM,
@@ -22,4 +23,9 @@ export const clearInput = () => ({
 export const onChangeInputContent = inputContent => ({
     type: SET_ON_CHANGE_INPUT_CONTENT,
     payload: inputContent
+})
+
+export const onEdit = itemId => ({
+    type: ON_EDIT,
+    payload: itemId
 })
