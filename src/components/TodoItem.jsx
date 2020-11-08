@@ -15,7 +15,7 @@ const todoItemStyles = theme => ({
   }
 })
 
-const TodoItem = ({ classes, content, itemId, onEdit }) => <>
+const TodoItem = ({ classes, content, itemId, onEdit }) => (
   <Grow in>
     <Paper
       className={classes.todoItem}
@@ -26,6 +26,6 @@ const TodoItem = ({ classes, content, itemId, onEdit }) => <>
       <Typography variant="h5">{content}</Typography>
     </Paper>
   </Grow>
-</>
+)
 
 export default connect(undefined, { onEdit })(withStyles(todoItemStyles)(TodoItem))

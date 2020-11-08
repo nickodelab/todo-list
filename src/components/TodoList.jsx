@@ -13,7 +13,7 @@ const todoListStyles = theme => ({
   }
 })
 
-const TodoList = ({ classes, items, numberOfItems }) => <>
+const TodoList = ({ classes, items, numberOfItems }) => (
   <Box className={classes.todoList}>
     {!!numberOfItems && <Typography className={classes.helperText}>
       You have {numberOfItems} items
@@ -22,7 +22,7 @@ const TodoList = ({ classes, items, numberOfItems }) => <>
       {items.map(({ content, id }) => <TodoItem content={content} key={id} itemId={id} />)}
     </Box>
   </Box>
-</>
+)
 
 const mapStateToProps = ({ todoList: { items } }) => ({ items, numberOfItems: items.length })
 export default connect(mapStateToProps)(withStyles(todoListStyles)(TodoList))

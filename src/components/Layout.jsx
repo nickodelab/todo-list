@@ -11,13 +11,15 @@ const layoutStyles = theme => ({
 	}
 })
 
-const Layout = ({ classes, children }) => <>
-	<AppBar role="banner" position="static">
-		<Toolbar></Toolbar>
-	</AppBar>
-	<Container className={classes.mainContent} maxWidth="sm">
-		{children}
-	</Container>
-</>
+const Layout = ({ classes, children }) => (
+	<div>
+		<AppBar role="banner" position="static">
+			<Toolbar></Toolbar>
+		</AppBar>
+		<Container className={classes.mainContent} maxWidth="sm">
+			{children}
+		</Container>
+	</div>
+)
 
 export default withStyles(layoutStyles)(Layout)

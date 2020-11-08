@@ -28,7 +28,7 @@ const TodoCreateItemForm = ({ classes, createItem, inputContent, onChangeInputCo
     inputElement.current.focus()
   }
 
-  return <>
+  return (
     <Paper
       className={classes.todoCreateItemForm}
       variant="outlined"
@@ -57,7 +57,7 @@ const TodoCreateItemForm = ({ classes, createItem, inputContent, onChangeInputCo
         <SendIcon />
       </IconButton>
     </Paper>
-  </>
+  )
 }
 
 const mapStateToProps = ({ todoList: { inputContent } }) => ({ inputContent })

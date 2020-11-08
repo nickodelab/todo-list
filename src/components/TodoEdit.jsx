@@ -16,7 +16,7 @@ const TodoEdit = ({ item, updateItem, onEdit }) => {
     onEdit(undefined)
   }
 
-  return <>
+  return (
     <Card variant="outlined">
       <CardHeader title="Edit Item" />
       <CardContent>
@@ -40,7 +40,7 @@ const TodoEdit = ({ item, updateItem, onEdit }) => {
           </Button>
       </CardActions>
     </Card>
-  </>
+  )
 }
 
 const mapStateToProps = ({ todoList: { items } }, props) => ({ item: selectorItemById(items, props) })

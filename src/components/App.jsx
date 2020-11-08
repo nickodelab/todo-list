@@ -7,14 +7,14 @@ import TodoCreateItemForm from './TodoCreateItemForm'
 import Layout from './Layout'
 import TodoEdit from './TodoEdit'
 
-const App = ({ editItemId }) => <>
+const App = ({ editItemId }) => (
   <Layout>
     {editItemId && <TodoEdit itemId={editItemId} />}
     <Header />
     <TodoCreateItemForm />
     <TodoList />
   </Layout>
-</>
+)
 
 const mapStateToProps = ({ todoList: { editItemId } }) => ({ editItemId })
 export default connect(mapStateToProps)(App)
