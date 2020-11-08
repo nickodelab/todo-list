@@ -1,3 +1,4 @@
+import React from 'react'
 import { AppBar, Toolbar, Container, withStyles } from "@material-ui/core"
 
 const layoutStyles = theme => ({
