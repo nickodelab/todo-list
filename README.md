@@ -1,7 +1,5 @@
-# Getting Started with Create React App
-
-Todo App
-
+# Todo App
+## [Check the App in Live](https://nicopixel-todolist.surge.sh/)
 
 ![](/src/doc/images/Home1.png)
 ![](/src/doc/images/Home2.png)
