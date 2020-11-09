@@ -24,10 +24,3 @@ Some tips to start with RTL:
 - Use the [ARIA markup](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques) to find any element in the DOM. Also the app will improve accessibility.
 - Use [Testing Playground extension extension](https://chrome.google.com/webstore/detail/testing-playground/hejbmebodbijjdhflfknehhcgaklhano?hl=en) to build your queries
 
-
-### `npm run build`
-
-## Redux structure:
-I would put inputContent inside the component
-I prefer pass it to the reducer to see an example of middleware
-
